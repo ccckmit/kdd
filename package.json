@@ -1,0 +1,25 @@
+{
+  "name": "kdd",
+  "version": "1.0.0",
+  "description": "A Simple Test Framework",
+  "main": "kdd.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {},
+  "bin": {},
+  "keywords": [
+    "test",
+    "tdd",
+    "assert"
+  ],
+  "homepage": "https://github.com/ccckmit/kdd",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/ccckmit/kdd.git"
+  },
+  "author": {
+    "name": "Chung-Chen Chen",
+    "email": "ccckmit@gmail.com"
+  },
+  "license": "MIT"
+}
