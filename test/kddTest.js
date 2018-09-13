@@ -14,24 +14,38 @@ describe('kdd', function() {
       kdd.has([5,7,9], 7)
       done()
     })
-  })
-  describe('none', function() {
-    it('none(abcdef, ccc)', function(done) {
-      kdd.none('abcdef', 'ccc')
-      done()
-    })
-    it('none(aabcc, /bb+/)', function(done) {
-      kdd.none('aabcc', /bb+/)
-      done()
-    })
-    it('none([5,7,9], 6)', function(done) {
-      kdd.none([5,7,9], 6)
+    it('has({name:ccc}, name)', function(done) {
+      kdd.has({name:'ccc'}, 'name')
       done()
     })
   })
-  describe('ok', function() {
-    it('ok(true)', function(done) {
-      kdd.ok(true)
+  describe('without', function() {
+    it('without(abcdef, ccc)', function(done) {
+      kdd.without('abcdef', 'ccc')
+      done()
+    })
+    it('without(aabcc, /bb+/)', function(done) {
+      kdd.without('aabcc', /bb+/)
+      done()
+    })
+    it('without([5,7,9], 6)', function(done) {
+      kdd.without([5,7,9], 6)
+      done()
+    })
+    it('without({name:ccc}, age)', function(done) {
+      kdd.without({name:'ccc'}, 'age')
+      done()
+    })
+  })
+  describe('yes', function() {
+    it('yes(true)', function(done) {
+      kdd.yes(true)
+      done()
+    })
+  })
+  describe('no', function() {
+    it('no(1===0)', function(done) {
+      kdd.no(1===0)
       done()
     })
   })

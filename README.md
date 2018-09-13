@@ -1,18 +1,17 @@
 # kdd -- A simple test framework
 
+kdd extends [assert](https://nodejs.org/api/assert.html) with the following functions.
+
+1. has
+2. not.has = without
+3. yes
+4. no
+
 ## Install
 
 ```
 $ npm install kdd
 ```
-
-## Usage
-
-kdd has only 3 test functions
-
-1. ok   -- ex: ok(1===1)
-2. has  -- ex: has([5,7,9], 7) , has('abcdef', 'cde'), has('aabbcc', /b+/)
-3. none -- ex: none([5,7,9], 6), none('abcdef', 'bb'), none('aacc', /b+/)
 
 ## Example
 
@@ -33,31 +32,46 @@ describe('kdd', function() {
       kdd.has([5,7,9], 7)
       done()
     })
-  })
-  describe('none', function() {
-    it('none(abcdef, ccc)', function(done) {
-      kdd.none('abcdef', 'ccc')
-      done()
-    })
-    it('none(aabcc, /bb+/)', function(done) {
-      kdd.none('aabcc', /bb+/)
-      done()
-    })
-    it('none([5,7,9], 6)', function(done) {
-      kdd.none([5,7,9], 6)
+    it('has({name:ccc}, name)', function(done) {
+      kdd.has({name:'ccc'}, 'name')
       done()
     })
   })
-  describe('ok', function() {
-    it('ok(true)', function(done) {
-      kdd.ok(true)
+  describe('without', function() {
+    it('without(abcdef, ccc)', function(done) {
+      kdd.without('abcdef', 'ccc')
+      done()
+    })
+    it('without(aabcc, /bb+/)', function(done) {
+      kdd.without('aabcc', /bb+/)
+      done()
+    })
+    it('without([5,7,9], 6)', function(done) {
+      kdd.without([5,7,9], 6)
+      done()
+    })
+    it('without({name:ccc}, age)', function(done) {
+      kdd.without({name:'ccc'}, 'age')
+      done()
+    })
+  })
+  describe('yes', function() {
+    it('yes(true)', function(done) {
+      kdd.yes(true)
+      done()
+    })
+  })
+  describe('no', function() {
+    it('no(1===0)', function(done) {
+      kdd.no(1===0)
       done()
     })
   })
 })
+
 ```
 
-Mocha Testing Result
+run
 
 ```
 $ mocha
@@ -67,12 +81,19 @@ $ mocha
       √ has(abcdef, cde)
       √ has(aabbbcc, /bb+/)
       √ has([5,7,9], 7)
-    none
-      √ none(abcdef, ccc)
-      √ none(aabcc, /bb+/)
-      √ none([5,7,9], 6)
-    ok
-      √ ok(true)
+      √ has({name:ccc}, name)
+    without
+      √ without(abcdef, ccc)
+      √ without(aabcc, /bb+/)
+      √ without([5,7,9], 6)
+      √ without({name:ccc}, age)
+    yes
+      √ yes(true)
+    no
+      √ no(1===0)
+
+
+  10 passing (57ms)
 ```
 
 
